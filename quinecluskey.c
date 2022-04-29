@@ -73,7 +73,7 @@ int count_minterm_of_implicant(Node_minterm *head)
     return count;
 }
 
-void enqueue(Queue *queue, char inp[bitsSize + 1], Node_minterm *id_minterm)
+void enqueue(Queue *queue, char inp[], Node_minterm *id_minterm)
 // Prosedur menambah node baru dengan data (bentuk biner dari implicant dan mintermnya) ke queue
 {
     Node *head = queue->head;
@@ -169,7 +169,7 @@ void destroy_implicant_list(ess_implicant *list_implicant)
     }
 }
 
-void dec2bin(int bil, char hasil[bitsSize])
+void dec2bin(int bil, char hasil[])
 // Prosedur yang mengubah indeks minterm ke bentuk binernya
 {
     for(int i = 0; i < bitsSize; ++i){
@@ -183,7 +183,7 @@ void dec2bin(int bil, char hasil[bitsSize])
     }
 }
 
-int isPairingPossible(char arr1[bitsSize + 1], char arr2[bitsSize + 1])
+int isPairingPossible(char arr1[], char arr2[])
 // Fungsi yang mengecek apakah arr1 bisa dipasangkan dengan arr2
 {
     int dif_element = 0, i;
@@ -201,7 +201,7 @@ int isPairingPossible(char arr1[bitsSize + 1], char arr2[bitsSize + 1])
     }
 }
 
-int id_dif(char arr1[bitsSize + 1], char arr2[bitsSize + 1])
+int id_dif(char arr1[], char arr2[])
 // Fungsi yang menghasilkan indeks dari elemen kedua array yang berbeda
 {
     int id_dif_element = 0;
@@ -370,7 +370,7 @@ int isEmptyTable(int brs, int kol, int table[brs][kol])
     }
 }
 
-void addImplicant(ess_implicant **list_ess_implicant, char implicant_bin[bitsSize + 1])
+void addImplicant(ess_implicant **list_ess_implicant, char implicant_bin[])
 // Prosedur menambah prime implicant ke node list_ess_implicant
 {
     ess_implicant *new_impli = malloc(sizeof(ess_implicant));
@@ -427,7 +427,7 @@ void deleteRow_oneimplicant(int brs, int kol, int table[brs][kol], int minterm_p
     }
 }
 
-void print_convert_bin_to_par(char bin[bitsSize + 1])
+void print_convert_bin_to_par(char bin[])
 // Prosedur mencetak hasil minimisasi dalam bentuk parameter input
 {
     char par[] = {'A', 'B', 'C', 'D', 'E', 'F' , 'G', 'H'};
@@ -505,7 +505,7 @@ int main(){
             arr_minterm[i] = 0;
         }
         else if(arr_minterm[i] > pow(2, bitsSize) - 1){
-            printf("\n!Warning! Karena tidak ada minterm negatif, maka dipilih minterm maksimal sesuai ukuran bit\n\n");
+            printf("\n!Warning! Karena indeks minterm melebihi minterm maksimal, maka dipilih minterm maksimal sesuai ukuran bit\n\n");
             arr_minterm[i] = pow(2, bitsSize) - 1;
         }
     }
