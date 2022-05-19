@@ -484,10 +484,12 @@ int main(){
     queue->head = NULL;
     next_queue->head = NULL;
     int jml_mint, id_mint, i, j, n_iter = 1, temp_sort;
-
+    
+    // Menerima input ukuran bit
     printf("Ukuran bit : ");
     scanf("%d", &bitsSize);
-
+    
+    // Validasi ukuran bit
     if(bitsSize < 1 || bitsSize > 26){
         printf("Ukuran bit tidak valid!");
         free(queue);
