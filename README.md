@@ -27,7 +27,7 @@ Metode ini melakukan minimisasi dengan mencari *essential implicant* dari *minte
 - [ ] Menerima input maxterm (*Product of Sum*)
 
 ### Dokumentasi
-Foto dokumentasi
+![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/Test1.png?raw=true)
 
 ## Referensi
 -	Brown S. D. dan Vranesic Z. G, Fundamentals of digital logic with VHDL design, 2000.
