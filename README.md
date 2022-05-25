@@ -29,10 +29,13 @@ Metode ini melakukan minimisasi dengan mencari *essential implicant* dari *minte
 ### Dokumentasi
 Contoh penggunaan program:
 Misalkan ingin dicari ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/Minterm.png?raw=true)
+
 Maka input pada program adalah
+
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/input.png?raw=true)
 Diperoleh output sebagai berikut
-[alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/output.png?raw=true)
+
+![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/output.png?raw=true)
 
 ## Referensi
 -	Brown S. D. dan Vranesic Z. G, Fundamentals of digital logic with VHDL design, 2000.
