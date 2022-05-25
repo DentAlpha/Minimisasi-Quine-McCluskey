@@ -28,6 +28,7 @@ Metode ini melakukan minimisasi dengan mencari *essential implicant* dari *minte
 
 ### Dokumentasi
 Contoh penggunaan program:
+
 Misalkan ingin dicari 
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/Minterm.png?raw=true)
