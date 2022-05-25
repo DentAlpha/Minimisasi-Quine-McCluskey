@@ -30,9 +30,10 @@ Metode ini melakukan minimisasi dengan mencari *essential implicant* dari *minte
 Contoh penggunaan program:
 Misalkan ingin dicari ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/Minterm.png?raw=true)
 
-Maka input pada program adalah
+Maka input yang diberikan ke program adalah
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/input.png?raw=true)
+
 Diperoleh output sebagai berikut
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/output.png?raw=true)
