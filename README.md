@@ -7,7 +7,8 @@ Anggota Kelompok:
 - Senggani Fatah Sedayu / 13220035
 
 ## Metode Tabular
-Ini penjelasan metode tabular
+Metode Tabular atau dikenal juga sebagai Metode Quine-McCluskey adalah sebuah metode minimisasi persamaan boolean.
+Metode ini mencari *essential implicant* dari *minterm* yang ingin disederhanakan.
 
 ## Program : `quinecluskey.c`
 
