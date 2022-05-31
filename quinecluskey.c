@@ -310,16 +310,35 @@ void fillTable(Queue *queue, int arr_minterm[], int brs, int kol, int table[brs]
     }
 }
 
-void printTable(int brs, int kol, int table[brs][kol])
+void printTable(int brs, int kol, int table[brs][kol], char list_impli[][bitsSize + 1], int arr_minterm[])
 // Prosedur mencetak tabel essential prime implicant
 {
     int i, j;
+
+    printf("\nTabel Prime Implicant:\n\n");
+
+    for(i = 0; i < bitsSize + 3; ++i){
+        printf(" ");
+    }
+    printf("\t");
+
+    for(i = 0; i < kol; ++i){
+        if(i == 0 || (i > 0 && arr_minterm[i] != arr_minterm[i - 1])){
+            printf("%d\t", arr_minterm[i]);
+        }
+    }
+    printf("\n\n");
+
     for(i = 0; i < brs; ++i){
+        printf("%s | \t", list_impli[i]);
         for(j = 0; j < kol; ++j){
-            printf("%d ", table[i][j]);
+            if(j == 0 || (j > 0 && arr_minterm[j] != arr_minterm[j - 1])){
+                printf("%d\t", table[i][j]);
+            }
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 int column_check(int brs, int kol, int kol_check, int table[brs][kol], int *id_brs)
@@ -427,51 +446,80 @@ void deleteRow_oneimplicant(int brs, int kol, int table[brs][kol], int minterm_p
     }
 }
 
-void print_convert_bin_to_par(char bin[])
+void print_convert_bin_to_par(char bin[], int is_sop)
 // Prosedur mencetak hasil minimisasi dalam bentuk parameter input
 {
-    char par[] = {'A', 'B', 'C', 'D', 'E', 'F' , 'G', 'H'};
-    char not_par[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+    char temp_par = 'A', temp_not_par = 'a';
     int i, count_hyphen = 0;
 
     for(i = 0; i < bitsSize; ++i){
         if(bin[i] != '-'){
-            if(bin[i] == '1'){
-                printf("%c", par[i]);
+            if(is_sop){
+                if(bin[i] == '1'){
+                    printf("%c", temp_par + i);
+                }
+                else if(bin[i] == '0'){
+                    printf("%c", temp_not_par + i);
+                }
             }
-            else if(bin[i] == '0'){
-                printf("%c", not_par[i]);
+            else{
+                if(i != 0 && bin[i - 1] != '-'){
+                    printf(" + ");
+                }
+
+                if(bin[i] == '1'){
+                    printf("%c", temp_not_par + i);
+                }
+                else if(bin[i] == '0'){
+                    printf("%c", temp_par + i);
+                }
             }
         }
         else{
             count_hyphen++;
             if(count_hyphen == bitsSize){
-                printf("1");
+                if(is_sop){
+                    printf("1");
+                }
+                else{
+                    printf("0");
+                }
             }
         }
     }
-
 }
 
-void printImplicantList(ess_implicant *list_ess_imp)
+void printImplicantList(ess_implicant *list_ess_imp, int is_sop)
 // Prosedur mencetak hasil minimisasi dalam bentuk biner dan diikuti oleh bentuk parameter input
 {
     ess_implicant *temp = list_ess_imp;
     while(temp != NULL){
-        printf("%s ", temp->bin);
-        temp = temp->next;
-    }
+        if(!is_sop){
+            printf("(");
+        }
 
-    printf("\n");
+        print_convert_bin_to_par(temp->bin, is_sop);
 
-    temp = list_ess_imp;
-    while(temp != NULL){
-        print_convert_bin_to_par(temp->bin);
-        if(temp->next != NULL){
+        if(temp->next != NULL && is_sop){
             printf(" + ");
+        }
+        else if(!is_sop){
+            printf(")");
+
         }
         temp = temp->next;
     }
+    printf("\n");
+}
+
+void greeting()
+// Prosedur mencetak banner logic minimization
+{
+    printf("--------------------------------------------------------------\n");
+    printf("| |   _   _  o  _   |\\/| o ._  o ._ _  o _   _. _|_ o  _  ._  |\n");
+    printf("| |_ (_) (_| | (_   |  | | | | | | | | | /_ (_|  |_ | (_) | | |\n");
+    printf("|         _|                                                  |\n");
+    printf("--------------------------------------------------------------\n\n");
 }
 
 int main(){
@@ -485,11 +533,21 @@ int main(){
     char arr_inp[bitsSize + 1];
     arr_inp[bitsSize] = '\0';
 
+    if(bitsSize < 1 || bitsSize > 8){
+        printf("Ukuran bit tidak valid! Silakan ganti nilai ukuran bit ke nilai yang valid.");
+        free(queue);
+        free(next_queue);
+        exit(1);
+    }
+
+    // Cetak banner
+    greeting();
+
     // Menerima input jumlah minterm
-    printf("Input : ");
+    printf("Input Jumlah Minterm/Maxterm : \n>");
     scanf("%d", &jml_mint);
     if(jml_mint < 1 || jml_mint > pow(2, bitsSize)){
-        printf("Input jumlah minterm tidak valid!");
+        printf("Input jumlah minterm/maxterm tidak valid!");
         free(queue);
         free(next_queue);
         exit(1);
@@ -498,14 +556,14 @@ int main(){
 
     // Menerima input indeks minterm
     for(i = 0; i < jml_mint; ++i){
-        printf("Minterm ke : ");
+        printf("Minterm/Maxterm indeks ke : ");
         scanf("%d", &arr_minterm[i]);
         if(arr_minterm[i] < 0){
-            printf("\n!Warning! Karena tidak ada minterm negatif, maka dipilih minterm 0\n\n");
+            printf("\n!Warning! Karena tidak ada minterm/maxterm negatif, maka dipilih minterm/maxterm 0\n\n");
             arr_minterm[i] = 0;
         }
         else if(arr_minterm[i] > pow(2, bitsSize) - 1){
-            printf("\n!Warning! Karena indeks minterm melebihi minterm maksimal, maka dipilih minterm maksimal sesuai ukuran bit\n\n");
+            printf("\n!Warning! Karena indeks minterm/maxterm melebihi minterm maksimal, maka dipilih minterm/maxterm maksimal sesuai ukuran bit\n\n");
             arr_minterm[i] = pow(2, bitsSize) - 1;
         }
     }
@@ -561,6 +619,9 @@ int main(){
     // Mengisi tabel essential prime implicant
     fillTable(queue, arr_minterm, n_imp, jml_mint, EprimeImp);
 
+    // Mencetak tabel prime implicant
+    printTable(n_imp, jml_mint, EprimeImp, list_implicant, arr_minterm);
+
     // Mencari essential prime implicant sampai tabel kosong
     while(!isEmptyTable(n_imp, jml_mint, EprimeImp)){
         id_mint = 0;
@@ -585,7 +646,10 @@ int main(){
 
     // Mencetak essential prime implicant
     printf("Hasil minimisasi (not A = a) : \n");
-    printImplicantList(list_ess_imp);
+    printf("Format SoP :\t");
+    printImplicantList(list_ess_imp, 1);
+    printf("Format PoS :\t");
+    printImplicantList(list_ess_imp, 0);
 
 
     destroy_list(&(queue->head));
