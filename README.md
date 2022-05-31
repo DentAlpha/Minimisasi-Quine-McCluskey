@@ -13,18 +13,16 @@ Metode ini melakukan minimisasi dengan mencari *essential implicant* dari *minte
 ## Program : `quinecluskey.c`
 
 ### Spesifikasi Program
-- Menerima input jumlah minterm dan indeks minterm (terdapat tambahan input ukuran bit untuk `quinecluskey_bitsSizeInput.c`)
-- Menampilkan output hasil minimisasi dalam bentuk biner dan dalam bentuk parameter input (`a`, `b`, dan seterusnya)
+- Menerima input jumlah minterm/maxterm dan indeks minterm/maxterm
+- Menampilkan output hasil minimisasi dalam bentuk SoP (*Sum of Product*) dan dalam bentuk PoS (*Product of Sum*) dengan parameter `A`, `B`, dan seterusnya
 
 ### Fitur
-- Minimisasi logika dengan ukuran 1 - 8 bit (1 - 26 bit untuk `quinecluskey_bitsSizeInput.c`)
+- Minimisasi logika dengan ukuran **1 - 8 bit**
 - Tidak menerima input *don't care* dan dianggap tidak ada *don't care*
 - Ukuran bit hanya bisa diganti di bagian *header file*
 
 ### Fitur yang Ingin Diimplementasikan
 - [ ] Menerima input *Don't care*
-- [ ] Validasi jumlah bit untuk `quinecluskey.c`
-- [ ] Menerima input maxterm (*Product of Sum*)
 
 ### Dokumentasi
 Contoh penggunaan program:
@@ -40,6 +38,21 @@ Maka input yang diberikan ke program adalah
 Diperoleh output sebagai berikut
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/output.png?raw=true)
+
+## Program : `quinecluskey_bitsSizeInput.c`
+
+### Spesifikasi Program
+- Menerima input ukuran bit, jumlah minterm/maxterm, dan indeks minterm/maxterm
+- Menampilkan output hasil minimisasi dalam bentuk SoP dan dalam bentuk PoS dengan parameter `A`, `B`, dan seterusnya
+
+### Fitur
+- Minimisasi logika dengan ukuran **1 - 26** bit dengan jumlah minterm/maxterm maksimal 518008 buah
+- Tidak menerima input *don't care* dan dianggap tidak ada *don't care*
+
+### Fitur yang Ingin Diimplementasikan
+- [ ] Menerima input *Don't care*
+
+### Dokumentasi
 
 ## Referensi
 -	Brown S. D. dan Vranesic Z. G, Fundamentals of digital logic with VHDL design, 2000.
