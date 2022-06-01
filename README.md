@@ -35,9 +35,17 @@ Maka input yang diberikan ke program adalah
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/input.png?raw=true)
 
+Proses yang dijalankan oleh program akan ditampilkan sebagai berikut
+
+![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/proses.png?raw=true)
+
 Diperoleh output sebagai berikut
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/output.png?raw=true)
+
+Hasil yang diberikan oleh program sesuai dengan kalkulator minimisasi logik pada internet
+
+![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/solusi.png?raw=true)
 
 ## Program : `quinecluskey_bitsSizeInput.c`
 
