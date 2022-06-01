@@ -448,42 +448,60 @@ void deleteRow_oneimplicant(int brs, int kol, int table[brs][kol], int minterm_p
 }
 
 void print_convert_bin_to_par(char bin[], int is_sop)
-// Prosedur mencetak hasil minimisasi dalam bentuk parameter input
+// Prosedur mencetak hasil minimisasi dalam bentuk Sum of Product dan Product of Sum
 {
     char temp_par = 'A', temp_not_par = 'a';
     int i, count_hyphen = 0;
 
-    for(i = 0; i < bitsSize; ++i){
-        if(bin[i] != '-'){
-            if(is_sop){
+    if(!is_sop){
+        char temp_param[bitsSize];
+
+        for(i = 0; i < bitsSize; ++i){
+            if(bin[i] == '-'){
+                temp_param[i] = '-';
+            }
+            else{
+                if(bin[i] == '0'){
+                    temp_param[i] = temp_par + i;
+                }
+                else{
+                    temp_param[i] = temp_not_par + i;
+                }
+            }
+        }
+
+        int count = 0;
+        for(i = 0; i < bitsSize; ++i){
+            if(temp_param[i] != '-'){
+                if(count == 0){
+                    printf("%c", temp_param[i]);
+                    count++;
+                }
+                else{
+                    printf(" + %c", temp_param[i]);
+                }
+            }
+        }
+    }
+    else{
+        for(i = 0; i < bitsSize; ++i){
+            if(bin[i] != '-'){
                 if(bin[i] == '1'){
                     printf("%c", temp_par + i);
                 }
-                else if(bin[i] == '0'){
+                else{
                     printf("%c", temp_not_par + i);
                 }
             }
             else{
-                if(i != 0 && bin[i - 1] != '-'){
-                    printf(" + ");
-                }
-
-                if(bin[i] == '1'){
-                    printf("%c", temp_not_par + i);
-                }
-                else if(bin[i] == '0'){
-                    printf("%c", temp_par + i);
-                }
-            }
-        }
-        else{
-            count_hyphen++;
-            if(count_hyphen == bitsSize){
-                if(is_sop){
-                    printf("1");
-                }
-                else{
-                    printf("0");
+                count_hyphen++;
+                if(count_hyphen == bitsSize){
+                    if(is_sop){
+                        printf("1");
+                    }
+                    else{
+                        printf("0");
+                    }
                 }
             }
         }
