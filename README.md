@@ -46,13 +46,12 @@ Diperoleh output sebagai berikut
 - Menampilkan output hasil minimisasi dalam bentuk SoP dan dalam bentuk PoS dengan parameter `A`, `B`, dan seterusnya
 
 ### Fitur
-- Minimisasi logika dengan ukuran **1 - 26** bit dengan jumlah minterm/maxterm maksimal 518008 buah
+- Minimisasi logika dengan ukuran **1 - 26** bit dengan jumlah minterm/maxterm maksimal 518008 buah (secara teoritis;tidak diuji)
 - Tidak menerima input *don't care* dan dianggap tidak ada *don't care*
 
 ### Fitur yang Ingin Diimplementasikan
 - [ ] Menerima input *Don't care*
-
-### Dokumentasi
+- [ ] Mengganti penggunaan *array* dengan alokasi memori agar minimisasi untuk jumlah minterm yang besar dapat dilakukan
 
 ## Referensi
 -	Brown S. D. dan Vranesic Z. G, Fundamentals of digital logic with VHDL design, 2000.
