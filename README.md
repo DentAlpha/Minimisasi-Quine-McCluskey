@@ -31,15 +31,15 @@ Misalkan ingin dicari
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/Minterm.png?raw=true)
 
-Maka input yang diberikan ke program adalah
+Maka input yang diberikan ke program adalah:
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/input.png?raw=true)
 
-Proses yang dijalankan oleh program akan ditampilkan sebagai berikut
+Proses yang dijalankan oleh program akan ditampilkan sebagai berikut:
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/proses.png?raw=true)
 
-Diperoleh output sebagai berikut
+Diperoleh output sebagai berikut:
 
 ![alt text](https://github.com/DentAlpha/Minimisasi-Quine-McCluskey/blob/main/Dokumentasi/output.png?raw=true)
 
